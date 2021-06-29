@@ -8,8 +8,8 @@ CREATE TABLE socios(
     socio VARCHAR(30),
     apellido VARCHAR(30),
     direccion VARCHAR(50),
-    telefono INT
-    -- PRIMARY KEY(rut)
+    telefono INT,
+    PRIMARY KEY(rut)
 );
 
 CREATE TABLE libros(
@@ -22,8 +22,8 @@ CREATE TABLE libros(
     nacimiento INT,
     muerte INT,
     tipodeautor VARCHAR(15),
-    diasprestamo INT
-    -- PRIMARY KEY(titulo)
+    diasprestamo INT,
+    PRIMARY KEY(titulo)
 );
 
 CREATE TABLE historial(
@@ -31,9 +31,9 @@ CREATE TABLE historial(
     socio VARCHAR(50),
     libro VARCHAR(50),
     fechaprestamo DATE,
-    fechadevolucion DATE
-    -- FOREIGN KEY (rut) REFERENCES socios(rut),
-    -- FOREIGN KEY (libro) REFERENCES libros(titulo)
+    fechadevolucion DATE,
+    FOREIGN KEY (rut) REFERENCES socios(rut),
+    FOREIGN KEY (libro) REFERENCES libros(titulo)
 );
 
 
@@ -47,7 +47,3 @@ SELECT nombreautor, apellidoautor FROM libros WHERE nacimiento > 1970;
 SELECT libro, COUNT(libro) AS total FROM historial GROUP BY libro ORDER BY total DESC LIMIT 1;
 
 
-
-SELECT * FROM socios;
-SELECT * FROM libros;
-SELECT * FROM historial;
